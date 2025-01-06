@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,  // Ensures compatibility between CommonJS and ES6 modules
+    "module": "commonjs",      // CommonJS module system, since Express uses it
+    "moduleResolution": "node", // Resolves modules the same way Node.js does
+    "target": "esnext",        // Target latest ECMAScript features
+    "strict": true,            // Enable strict type checking
+    "outDir": "./dist",        // Compiled JS output folder
+    "rootDir": "./src",        // Root folder for TypeScript source files
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
