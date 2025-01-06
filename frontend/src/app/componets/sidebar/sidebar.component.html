@@ -1,0 +1,35 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer [opened]="isSidebarOpened()" class="drawer-sidenav" mode="side">
+    <div class="sidenav">
+      <div class="sidenav-header">
+        <mat-icon (click)="toggleSidebar()" class="mat-icon-menu" appHighlightText>menu</mat-icon>
+      </div>
+
+      <span class="normal-span" [class.selected]="currentPageValue === 'home'" (click)="setCurrentPage('home')">
+        <div class="icon-name-div" appHighlightText>
+          <mat-icon>home</mat-icon>
+          Home
+        </div>
+      </span>
+      <span class="normal-span" [class.selected]="currentPageValue === 'employees'"
+        (click)="setCurrentPage('employees')">
+        <div class="icon-name-div" appHighlightText>
+          <mat-icon>list</mat-icon>
+          Employees
+        </div>
+      </span>
+      <span *ngIf="!isLoggedin()" class="normal-span" [class.selected]="currentPageValue === 'login'"
+        (click)="setCurrentPage('login')">
+        <div class="icon-name-div" appHighlightText>
+          <mat-icon>login</mat-icon>
+          Login Page
+        </div>
+      </span>
+    </div>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

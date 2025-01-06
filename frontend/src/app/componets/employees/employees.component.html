@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search employees..." (input)="onSearchChange($event)" />
+  </div>
+  
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Age</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody class="employee-table-body">
+      <tr *ngFor="let employee of filteredEmployees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.employee_name }}</td>
+        <td>{{ formatSalary(employee.employee_salary) }}</td>
+        <td>{{ employee.employee_age | AgePipe }}</td>
+        <td>
+          <mat-icon class="details-icon" appHighlightText (click)="onButtonClick(employee.id)">info</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="main-div">
+    <form class="form-desgin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <span class="form-label">Login Form</span>
+  
+      <mat-form-field
+        class="form-input"
+        appearance="fill"
+        [class.has-error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+      >
+        <mat-label>Email</mat-label>
+        <mat-icon matPrefix>mail</mat-icon>
+        <input matInput id="email" type="email" formControlName="email" placeholder="xyz@gmail.com" />
+        <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <span *ngIf="loginForm.get('email')?.hasError('required')">Email is required.</span>
+          <span *ngIf="loginForm.get('email')?.hasError('email')">Invalid email format.</span>
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field
+        class="form-input"
+        appearance="fill"
+        [class.has-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+      >
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>password</mat-icon>
+        <input matInput id="password" type="password" formControlName="password" placeholder="zaydbah@123" />
+        <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-style">
+          <span *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</span>
+          <span *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</span>
+          <span *ngIf="loginForm.get('password')?.hasError('pattern')">Password must contain at least one uppercase, one lowercase, one number, and one special character.</span>
+        </mat-error>
+      </mat-form-field>
+  
+      <button mat-raised-button type="submit" class="login-btn" [disabled]="loginForm.invalid">Login</button>
+  
+      <!-- Error and Success Messages -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+  

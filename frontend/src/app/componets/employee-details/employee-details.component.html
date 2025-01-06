@@ -1,0 +1,13 @@
+<div class="container">
+    <div *ngIf="!errorMessage"  class="employee-card">
+        <h2>Employee Details</h2>
+        <div class="employee-details">
+            <span><strong>ID:</strong> {{ employee?.id }}</span>
+            <span><strong>Name:</strong> {{ employee?.employee_name }}</span>
+            <span><strong>Salary:</strong> {{ formatSalary(employee?.employee_salary) }}</span>
+            <span><strong>Age:</strong> {{ employee?.employee_age | AgePipe }}</span>
+            <span><strong>Profile Image:</strong> <img [src]="employee?.profile_image" alt="Profile Image" /></span>
+        </div>
+    </div>
+    <span *ngIf="errorMessage" class="error-message">{{errorMessage}}</span>
+</div>

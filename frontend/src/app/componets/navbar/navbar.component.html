@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="navbar-subcontent"> 
+  <button *ngIf="!isSidebarOpen()" class="menu-btn" (click)="toggleSidebar()">
+    <mat-icon class="mat-icon-menu" appHighlightText>menu</mat-icon>
+  </button>
+  <span class="title" >Starter Project</span>
+</div>
+  <button class="login-btn" *ngIf="isLoggedIn(); else logintemplate" (click)="logout()" appHighlightText>Logout</button>
+  <ng-template #logintemplate>
+    <button class="login-btn" (click)="login()" appHighlightText>
+      <div class="icon-name-div">
+        <mat-icon>login</mat-icon>
+        Login
+      </div>
+    </button>
+  </ng-template>
+</div>
